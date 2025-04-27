@@ -127,3 +127,10 @@
 [2025-04-27T16:46:47.899Z] INFO: Server running in development mode on port 50102 
 [2025-04-27T16:46:47.900Z] INFO: API ready at: http://localhost:50102/api 
 [2025-04-27T16:46:47.901Z] INFO: Server started at: 2025-04-27T16:46:47.901Z 
+[2025-04-27T17:39:05.209Z] INFO: Attempting to connect to MongoDB... 
+[2025-04-27T17:39:05.211Z] INFO: Attempting to connect to MongoDB... 
+[2025-04-27T17:39:05.213Z] INFO: MongoDB connected: undefined 
+[2025-04-27T17:39:05.214Z] INFO: MongoDB connected: undefined 
+[2025-04-27T17:39:05.223Z] INFO: Server running in development mode on port 5010 
+[2025-04-27T17:39:05.224Z] INFO: API ready at: http://localhost:5010/api 
+[2025-04-27T17:39:05.226Z] INFO: Server started at: 2025-04-27T17:39:05.226Z 

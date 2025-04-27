@@ -38,6 +38,8 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch((err) => console.error('MongoDB connection error:', err));
 
 // Routes
+//  // إذا كنت تستخدم ملفات routes
+
 app.use('/api', routes);
 
 // Global error handler
