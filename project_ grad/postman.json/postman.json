@@ -1,0 +1,521 @@
+{
+  "info": {
+    "_postman_id": "unique-id-here",
+    "name": "E-Commerce API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "url": {
+              "raw": "http://localhost:5014/api/auth/register",
+              "port": "5014"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "url": {
+              "raw": "http://localhost:5014/api/auth/login",
+              "port": "5014"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5014/api/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "Get Categories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5014/api/products/categories",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", "categories"]
+            }
+          }
+        },
+        {
+          "name": "Get Products by Category",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5014/api/products/category/:category",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", "category", ":category"],
+              "variable": [
+                {
+                  "key": "category",
+                  "value": "electronics"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search Products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5014/api/products/search?q=phone",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", "search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "phone"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter Products",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:5014/api/products/filter",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", "filter"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"category\": \"electronics\",\n    \"price\": { \"$gte\": 100 }\n}"
+            }
+          }
+        },
+        {
+          "name": "Add Product Review",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:5014/api/products/:id/reviews",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", ":id", "reviews"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "product_id_here"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rating\": 5,\n    \"comment\": \"Great product!\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Product Reviews",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5014/api/products/:id/reviews",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", ":id", "reviews"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "product_id_here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5014/api/products/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "product_id_here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:5014/api/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Test Product\",\n    \"description\": \"Test Description\",\n    \"price\": 99.99,\n    \"category\": \"electronics\",\n    \"stock\": 10\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "http://localhost:5014/api/products/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "product_id_here"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Updated Product\",\n    \"description\": \"Updated Description\",\n    \"price\": 149.99,\n    \"category\": \"electronics\",\n    \"stock\": 15\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:5014/api/products/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "product_id_here"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Update Product Stock",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "http://localhost:5014/api/products/:id/stock",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", ":id", "stock"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "product_id_here"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"stock\": 25\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Bulk Products",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:5014/api/products/bulk/create",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", "bulk", "create"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"name\": \"Product 1\",\n        \"description\": \"Description 1\",\n        \"price\": 99.99,\n        \"category\": \"electronics\",\n        \"stock\": 10\n    },\n    {\n        \"name\": \"Product 2\",\n        \"description\": \"Description 2\",\n        \"price\": 149.99,\n        \"category\": \"electronics\",\n        \"stock\": 15\n    }\n]"
+            }
+          }
+        },
+        {
+          "name": "Update Bulk Products",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "http://localhost:5014/api/products/bulk/update",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "products", "bulk", "update"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"_id\": \"product_id_1\",\n        \"price\": 89.99,\n        \"stock\": 20\n    },\n    {\n        \"_id\": \"product_id_2\",\n        \"price\": 139.99,\n        \"stock\": 25\n    }\n]"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Add to Cart",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:5014/api/cartItems/add-to-cart",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "cartItems", "add-to-cart"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"productId\": \"product_id_here\",\n    \"quantity\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "View Cart",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5014/api/cartItems/viewCartProducts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "cartItems", "viewCartProducts"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Update Cart Item",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "http://localhost:5014/api/cartItems/updateCartItemQuantity",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "cartItems", "updateCartItemQuantity"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"productId\": \"product_id_here\",\n    \"quantity\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Cart Item",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:5014/api/cartItems/deleteCartItem/:productId",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "cartItems", "deleteCartItem", ":productId"],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "product_id_here"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:5014/api/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "orders"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"shippingAddress\": {\n        \"street\": \"123 Test St\",\n        \"city\": \"Test City\",\n        \"state\": \"TS\",\n        \"zipCode\": \"12345\"\n    }\n}"
+            }
+          }
+        },
+        {
+          "name": "Get User Orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5014/api/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5014",
+              "path": ["api", "orders"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
